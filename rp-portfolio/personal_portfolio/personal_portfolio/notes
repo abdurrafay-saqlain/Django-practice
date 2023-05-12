@@ -1,0 +1,33 @@
+<!-- Models -->
+An ORM is a program that allows you to create classes that correspond to database tables. Class attributes correspond to columns, and instances of the classes correspond to rows in the database.
+When you’re using an ORM, the classes you build that represent database tables are referred to as models. In Django, they live in the models.py module of each Django app.
+
+In your projects app, you’ll only need one table to store the different projects you’ll display to the user. That means you’ll only need to create one model in models.py.
+
+The model you’ll create will be called Project and will have the following fields:
+
+title will be a short string field to hold the name of your project.
+
+description will be a larger string field to hold a longer piece of text.
+
+technology will be a string field, but its contents will be limited to a select number of choices.
+
+image will be an image field that holds the file path where the image is stored.
+
+Django models come with many built-in model field types. We’ve only used three in this model. CharField is used for short strings and specifies a maximum length.
+
+There’s quite a lot going on in this code block, so let’s break it down.
+<!-- VIews -->
+In line 5, you perform a query. A query is simply a command that allows you to create, retrieve, update, or delete objects (or rows) in your database. In this case, you’re retrieving all objects in the projects table.
+
+A database query returns a collection of all objects that match the query, known as a Queryset. In this case, you want all objects in the table, so it will return a collection of all projects.
+
+In line 6 of the code block above, we define a dictionary context. The dictionary only has one entry projects to which we assign our Queryset containing all projects. The context dictionary is used to send information to our template. Every view function you create needs to have a context dictionary.
+
+In line 9, context is added as an argument to render(). Any entries in the context dictionary are available in the template, as long as the context argument is passed to render(). You’ll need to create a context dictionary and pass it to render in each view function you create.
+
+We also render a template named project_index.html, which doesn’t exist yet. Don’t worry about that for now. You’ll create the templates for these views in the next section.
+
+Next, you’ll need to create the project_detail() view function. This function will need an additional argument: the id of the project that’s being viewed.
+
+Otherwise, the logic is similar:
